@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Presença</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"] { /* Adicionado input[type="email"] */
+            width: calc(100% - 20px); /* Ajusta para padding */
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #67256f;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #a07ba5;
+        }
+        #message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: none; /* Esconde a mensagem por padrão */
+        }
+        .message-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .message-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        #loading {
+            display: none;
+            margin-top: 15px;
+            color: #67256f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registro de Presença</h1>
+        <form id="checkinForm">
+            <div class="form-group">
+                <label for="nomeAluno">Nome Completo:</label>
+                <input type="text" id="nomeAluno" name="nomeAluno" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required> </div>
+            <button type="submit" id="submitButton">Fazer Check-in</button>
+        </form>
+        <div id="loading">Obtendo sua localização...</div>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx1apgYEiF8xaIvLHPsrZ2FFWyTQCIOM2co79zmTvhzdHaUfEiWNr2-Qn4_kUYP_nxa/exec';
+
+        document.getElementById('checkinForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const nomeAluno = document.getElementById('nomeAluno').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const messageDiv = document.getElementById('message');
+            const loadingDiv = document.getElementById('loading');
+            const submitButton = document.getElementById('submitButton');
+
+            messageDiv.style.display = 'none';
+            messageDiv.classList.remove('message-success', 'message-error');
+            loadingDiv.style.display = 'none'; // Esconde o loading inicialmente
+            submitButton.disabled = true; // Desabilita o botão para evitar múltiplos envios
+
+            if (!nomeAluno || !email) {
+                messageDiv.textContent = 'Por favor, preencha todos os campos.';
+                messageDiv.classList.add('message-error');
+                messageDiv.style.display = 'block';
+                submitButton.disabled = false;
+                return;
+            }
+
+            loadingDiv.style.display = 'block'; // Mostra o loading
+
+            let latitude = 'Não autorizado/Erro';
+            let longitude = 'Não autorizado/Erro';
+
+            try {
+                // Tenta obter a localização
+                const position = await new Promise((resolve, reject) => {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(resolve, reject, {
+                            enableHighAccuracy: true,
+                            timeout: 10000, // Tempo máximo para obter a localização (10 segundos)
+                            maximumAge: 0 // Força a obter uma nova localização
+                        });
+                    } else {
+                        reject(new Error("Geolocation não é suportada por este navegador."));
+                    }
+                });
+                latitude = position.coords.latitude;
+                longitude = position.coords.longitude;
+            } catch (geoError) {
+                console.error('Erro ao obter localização:', geoError.message);
+                // Opcional: Mostrar uma mensagem ao usuário se a localização não puder ser obtida
+                // messageDiv.textContent = 'Não foi possível obter sua localização. Check-in será feito sem ela.';
+                // messageDiv.classList.add('message-error');
+                // messageDiv.style.display = 'block';
+            }
+
+            const formData = new FormData();
+            formData.append('nomeAluno', nomeAluno);
+            formData.append('email', email);
+            formData.append('latitude', latitude); // Adiciona latitude
+            formData.append('longitude', longitude); // Adiciona longitude
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.text();
+
+                if (response.ok && result.includes("Check-in realizado com sucesso!")) {
+                    messageDiv.textContent = 'Check-in realizado com sucesso!';
+                    messageDiv.classList.add('message-success');
+                    document.getElementById('checkinForm').reset();
+                } else {
+                    messageDiv.textContent = 'Erro ao fazer check-in: ' + result;
+                    messageDiv.classList.add('message-error');
+                }
+            } catch (error) {
+                console.error('Erro na requisição:', error);
+                messageDiv.textContent = 'Ocorreu um erro de conexão. Tente novamente.';
+                messageDiv.classList.add('message-error');
+            } finally {
+                loadingDiv.style.display = 'none'; // Esconde o loading
+                messageDiv.style.display = 'block';
+                submitButton.disabled = false; // Reabilita o botão
+            }
+        });
+    </script>
+</body>
+</html>
