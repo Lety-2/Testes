@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estradas do Triângulo: Sua Guia Digital</title>
+    <style>
+        /* Cores base para acessibilidade: */
+        /* Amarelo vibrante para detalhes: #FFD700 (Dourado/Gold) */
+        /* Amarelo mais suave para fundos claros: #FFFACD (Lemon Chiffon) */
+        /* Azul escuro para textos e fundos principais: #2c3e50 (Dark Midnight Blue) */
+        /* Azul mais claro para links e destaques: #005d83 (Petra Blue) */
+        /* Cinza escuro para textos secundários: #333 */
+        /* Branco para fundos gerais: #fff */
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Fundo geral claro */
+            color: #333; /* Cor padrão do texto */
+        }
+        header {
+            background-color: #2c3e50; /* Azul escuro para o cabeçalho */
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+            border-bottom: 5px solid #FFD700; /* Linha amarela de destaque */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.1rem;
+        }
+        nav {
+            background-color: #34495e; /* Um azul um pouco mais claro que o cabeçalho */
+            padding: 0.7rem 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 1.2rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        nav a:hover {
+            background-color: #FFD700; /* Amarelo no hover dos links */
+            color: #2c3e50; /* Texto escuro no hover para contraste */
+            border-radius: 4px;
+            transform: translateY(-2px);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+        .main-content, .sidebar {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            color: #2c3e50; /* Azul escuro para os títulos de seção */
+            margin-bottom: 15px;
+            border-bottom: 2px solid #FFD700; /* Amarelo para a linha inferior do título */
+            padding-bottom: 5px;
+        }
+        .news-item {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .news-item h3 {
+            margin-top: 0;
+            color: #0e486e; /* Azul vibrante para títulos de notícia */
+        }
+        .news-item p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .news-item a {
+            color: #005d83;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .news-item a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        .info-box {
+            margin-bottom: 20px; /* Mantém o espaçamento padrão entre info-boxes na sidebar */
+            padding: 15px;
+            border: 1px solid #FFFACD; /* Borda suave amarela clara */
+            border-radius: 5px;
+            background-color: #FFFACD; /* Fundo suave amarela clara */
+            color: #333; /* Garante que o texto padrão dentro do info-box seja escuro */
+        }
+        .info-box h2 {
+            margin-top: 0;
+            color: #2c3e50; /* Títulos das caixas em azul escuro */
+            font-size: 1.3rem;
+            border-bottom: 1px dashed #FFD700; /* Linha pontilhada amarela */
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        .info-box p {
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .info-box a { /* Links dentro das info-boxes */
+            color: #005d83; /* Azul vibrante para links */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .info-box a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .traffic-map-placeholder {
+            width: 100%;
+            height: 200px; /* Altura fixa para simular o mapa */
+            background-color: #e0e0e0; /* Cor de fundo para o placeholder */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+            text-align: center;
+            border: 1px dashed #aaa;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+        .newsletter-signup input[type="email"],
+        .newsletter-signup button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .newsletter-signup button {
+            background-color: #27ae60; /* Verde escuro para o botão de cadastro */
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .newsletter-signup button:hover {
+            background-color: #229954;
+        }
+
+        /* Estilos para o rodapé e seus elementos */
+        footer {
+            background-color: #2c3e50; /* Azul escuro para o rodapé */
+            color: #fff; /* Cor do texto padrão do rodapé (para o texto de direitos autorais) */
+            margin-top: 20px;
+            font-size: 0.9rem;
+            border-top: 5px solid #FFD700; /* Linha amarela de destaque */
+            padding: 20px 0; /* Padding superior e inferior para o footer */
+            display: flex; /* Transforma o footer em um container flex */
+            flex-direction: column; /* Organiza os itens em coluna */
+            align-items: center; /* Centraliza os itens horizontalmente */
+            text-align: center; /* Centraliza o texto */
+        }
+
+        /* Contêiner para os info-boxes no rodapé */
+        .footer-info-boxes {
+            max-width: 1200px;
+            width: 100%; /* Ocupa toda a largura disponível do footer */
+            padding: 0 20px; /* Padding lateral para alinhar com o container principal */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Colunas flexíveis */
+            gap: 20px; /* Espaçamento entre os boxes no grid */
+            margin-bottom: 20px; /* Espaço entre os boxes e o texto de direitos autorais */
+        }
+        
+        /* Ajuste para info-boxes no rodapé */
+        .footer-info-boxes .info-box {
+            /* Removendo height: 100% para que a altura seja definida pelo conteúdo e padding */
+            /* Isso permite que as caixas se adaptem melhor ao conteúdo sem forçar altura excessiva */
+            margin-bottom: 0; /* O gap já cuida do espaçamento entre as linhas do grid */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Distribui o conteúdo verticalmente */
+            color: #333; /* Garante que o texto dentro dos info-boxes no footer seja escuro */
+            
+            /* Ajuste de padding para controlar a altura visual */
+            padding: 12px 15px; /* Reduzi um pouco o padding vertical para diminuir a altura */
+        }
+
+        .footer-info-boxes .info-box h2,
+        .footer-info-boxes .info-box p {
+            color: #2c3e50; 
+        }
+        .footer-info-boxes .info-box a {
+            color: #005d83; /* Mantém o azul vibrante para links */
+        }
+        .footer-info-boxes .info-box a:hover {
+            color: #2980b9;
+        }
+
+        /* Texto de direitos autorais no rodapé */
+        .footer-text {
+            padding: 0 20px; /* Adiciona padding lateral para o texto de direitos autorais */
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            nav a {
+                display: block;
+                padding: 0.8rem 1rem;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            /* As seções de cartões no rodapé também se adaptam a uma coluna em telas menores */
+            .footer-info-boxes {
+                grid-template-columns: 1fr;
+            }
+            /* Adiciona margem vertical entre os info-boxes quando eles se empilham */
+            .footer-info-boxes .info-box {
+                 margin-bottom: 20px; /* Adiciona espaçamento entre as caixas empilhadas */
+            }
+            .footer-info-boxes .info-box:last-child {
+                margin-bottom: 0; /* Remove a margem da última caixa para não criar espaço extra */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Estradas do Triângulo: Sua Guia Digital</h1>
+        <p>Conectando você às melhores rotas, destinos e experiências do Triângulo Mineiro.</p>
+    </header>
+
+    <nav>
+        <a href="#">Início</a>
+        <a href="#">Rotas & Notícias</a>
+        <a href="#">Clima na Estrada</a>
+        <a href="#">Tráfego ao Vivo</a>
+        <a href="#">Onde Comer</a>
+        <a href="#">Onde Ficar</a>
+        <a href="#">Compras</a>
+        <a href="#">Comunidade</a>
+    </nav>
+
+    <div class="container">
+        <main class="main-content">
+            <h2 class="section-title">Últimas Notícias e Condições das Estradas</h2>
+            <div id="news-feed">
+                <div class="news-item">
+                    <h3>BR-050: Novidades na Duplicação do Trecho Araguari-Uberlândia</h3>
+                    <p>Acompanhe os avanços das obras de duplicação que prometem mais fluidez e segurança para quem trafega pela região. Impactos no tráfego e desvios temporários.</p>
+                    <a href="#">Ver Detalhes</a>
+                </div>
+                <div class="news-item">
+                    <h3>Roteiro Gastronômico: Descobertas Culinárias em Uberaba</h3>
+                    <p>Exploramos os sabores únicos do Triângulo Mineiro, com destaque para a culinária tropeira e os restaurantes tradicionais de Uberaba. Imperdível para quem passa pela região!</p>
+                    <a href="#">Leia a Reportagem</a>
+                </div>
+                <div class="news-item">
+                    <h3>Segurança nas Rodovias: Dicas para Viagens Longas</h3>
+                    <p>Conduzir com segurança é prioridade. Confira nossas dicas essenciais para planejar sua viagem, revisar seu veículo e evitar imprevistos nas estradas do Triângulo.</p>
+                    <a href="#">Saiba Mais</a>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="info-box traffic-info">
+                <h2><a href="#" style="color: inherit; text-decoration: none;">Tráfego em Tempo Real</a></h2>
+                <p>Monitore as condições das principais rodovias do Triângulo Mineiro e planeje sua rota com inteligência.</p>
+                <div class="traffic-map-placeholder">
+                    [Espaço para Mapa de Tráfego ao Vivo - Google Maps API ou similar]
+                </div>
+                <a href="#" style="color: #005d83; text-decoration: none; font-weight: bold; margin-top: 10px; display: block;">Ver no Mapa Completo</a>
+            </div>
+
+            <div class="info-box">
+                <h2><a href="#" style="color: inherit; text-decoration: none;">Guia de Restaurantes</a></h2>
+                <p>Descubra os melhores sabores do Triângulo Mineiro: restaurantes, lanchonetes e bares recomendados por quem conhece a região.</p>
+                <a href="#" style="color: #005d83; text-decoration: none; font-weight: bold;">Ver Opções</a>
+            </div>
+
+            <div class="info-box">
+                <h2><a href="#" style="color: inherit; text-decoration: none;">Hospedagem na Estrada</a></h2>
+                <p>Encontre hotéis, pousadas e locais de descanso ideais para a sua viagem, com avaliações e dicas para um pernoite tranquilo.</p>
+                <a href="#" style="color: #005d83; text-decoration: none; font-weight: bold;">Explorar Hotéis</a>
+            </div>
+
+            <div class="info-box">
+                <h2><a href="#" style="color: inherit; text-decoration: none;">Lojas e Serviços</a></h2>
+                <p>De postos de gasolina a lojas de conveniência e serviços automotivos: tudo que você precisa saber sobre o comércio nas estradas do Triângulo.</p>
+                <a href="#" style="color: #005d83; text-decoration: none; font-weight: bold;">Descobrir Lojas</a>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-info-boxes">
+            <div class="info-box newsletter-signup">
+                <h2>Receba Nossas Atualizações!</h2>
+                <p>As melhores rotas, dicas e eventos do Triângulo Mineiro direto no seu e-mail.</p>
+                <form id="signup-form">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                    <button type="submit">Cadastrar</button>
+                </form>
+                <div id="signup-message" style="margin-top: 10px; color: green;"></div>
+            </div>
+
+            <div class="info-box">
+                <h2><a href="#" style="color: inherit; text-decoration: none;">Fórum dos Viajantes</a></h2>
+                <p>Compartilhe suas experiências, tire dúvidas e encontre companheiros de estrada no nosso fórum exclusivo do Triângulo.</p>
+                <a href="#" style="color: #005d83; text-decoration: none; font-weight: bold;">Participar agora</a>
+            </div>
+
+            <div class="info-box weather-info">
+                <h2>Clima na Estrada</h2>
+                <p>Situação atual para: <span id="weather-location">Uberlândia, MG</span></p>
+                <p>Temperatura: <span id="weather-temp">--°C</span></p>
+                <p>Condição: <span id="weather-condition">Carregando...</span></p>
+                <p style="font-size: 0.85rem; color: #555;">(Previsão para as principais cidades do Triângulo em breve)</p>
+            </div>
+        </div>
+
+        <div class="footer-text">
+            <p>&copy; 2025 Estradas do Triângulo: Sua Guia Digital. Todos os direitos reservados.</p>
+            <p>Um projeto para conectar e valorizar a região.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- JavaScript para funcionalidades dinâmicas (apenas placeholders para a apresentação) ---
+
+        async function fetchNews() {
+            const newsFeedDiv = document.getElementById('news-feed');
+            // Mantém as notícias estáticas para a apresentação
+        }
+
+        async function fetchWeather() {
+            const apiKey = 'SUA_CHAVE_API_DO_CLIMA'; // Substitua pela sua chave de API
+            const city = 'Uberlândia'; // Exemplo de cidade do Triângulo
+            const countryCode = 'BR';
+            const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${apiKey}&units=metric&lang=pt_br`;
+
+            try {
+                const response = await fetch(weatherUrl);
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP! status: ${response.status}`);
+                }
+                const data = await response.json();
+
+                document.getElementById('weather-temp').textContent = `${Math.round(data.main.temp)}°C`;
+                document.getElementById('weather-condition').textContent = data.weather[0].description;
+                document.getElementById('weather-location').textContent = `${data.name}, ${data.sys.country}`;
+
+            } catch (error) {
+                console.error('Erro ao carregar clima:', error);
+                document.getElementById('weather-temp').textContent = '--°C';
+                document.getElementById('weather-condition').textContent = 'Erro ao carregar';
+            }
+        }
+
+        document.getElementById('signup-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value;
+            const signupMessage = document.getElementById('signup-message');
+
+            signupMessage.textContent = `Email "${email}" registrado para contato.`;
+            emailInput.value = '';
+            signupMessage.style.color = 'green';
+        });
+
+        // Chamadas iniciais ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            // Não chamamos fetchNews() para manter o conteúdo estático para a demo
+            fetchWeather(); // Pode tentar buscar o clima, mas se a API Key não for real, dará erro
+        });
+    </script>
+</body>
+</html>
