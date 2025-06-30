@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Revista Digital</title>
+    <style>
+        /* Estilos básicos para a revista */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #555;
+            padding: 0.5rem 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 1rem;
+            transition: background-color 0.3s ease; /* Efeito de transição para o hover */
+        }
+        nav a:hover {
+            background-color: #777; /* Cor de fundo ao passar o mouse */
+            border-radius: 4px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Duas colunas: notícias e barra lateral */
+            gap: 20px;
+        }
+        .main-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .news-item {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .news-item h3 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        .news-item p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .news-item a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .news-item a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        .weather-info, .newsletter-signup {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .newsletter-signup input[type="email"],
+        .newsletter-signup button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; /* Garante que padding e border não aumentem a largura */
+        }
+        .newsletter-signup button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .newsletter-signup button:hover {
+            background-color: #218838;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr; /* Uma única coluna em telas menores */
+            }
+            nav a {
+                display: block; /* Links de navegação empilhados em telas menores */
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Minha Revista Digital</h1>
+        <p>As últimas notícias, clima e muito mais!</p>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Notícias</a>
+        <a href="#">Clima</a>
+        <a href="#">Sobre</a>
+        <a href="#">Contato</a>
+    </nav>
+
+    <div class="container">
+        <main class="main-content">
+            <h2>Últimas Notícias</h2>
+            <div id="news-feed">
+                <div class="news-item">
+                    <h3>Título da Notícia 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <a href="#">Leia mais</a>
+                </div>
+                <div class="news-item">
+                    <h3>Título da Notícia 2</h3>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <a href="#">Leia mais</a>
+                </div>
+                </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="weather-info">
+                <h2>Clima</h2>
+                <p>Local: <span id="weather-location">Belo Horizonte, MG</span></p>
+                <p>Temperatura: <span id="weather-temp">--°C</span></p>
+                <p>Condição: <span id="weather-condition">Carregando...</span></p>
+                </div>
+
+            <div class="newsletter-signup">
+                <h2>Receba Nossas Atualizações!</h2>
+                <p>Cadastre-se para receber as últimas notícias e novidades diretamente no seu e-mail.</p>
+                <form id="signup-form">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                    <button type="submit">Cadastrar</button>
+                </form>
+                <div id="signup-message" style="margin-top: 10px; color: green;"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Minha Revista Digital. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // --- JavaScript para funcionalidades dinâmicas ---
+
+        // 1. Carregamento do Feed de Notícias
+        // Para um feed dinâmico, você precisaria de uma API de notícias ou um feed RSS
+        // Exemplo (meramente ilustrativo, você precisaria de uma API real e permissões):
+        async function fetchNews() {
+            const newsFeedDiv = document.getElementById('news-feed');
+            newsFeedDiv.innerHTML = 'Carregando notícias...';
+            try {
+                // Aqui você faria uma requisição a uma API de notícias.
+                // Ex: fetch('https://api.news-provider.com/latest?apiKey=SUA_CHAVE_API')
+                // Por questões de segurança e CORS, isso geralmente exigiria um backend para mascarar a chave da API
+                // ou um proxy.
+                const dummyNews = [
+                    { title: 'Tecnologia: Lançamento do novo smartphone revolucionário', content: 'Empresa X lança dispositivo com inovações surpreendentes...' },
+                    { title: 'Economia: Bolsa de valores em alta com otimismo do mercado', content: 'Investidores confiantes após indicadores positivos...' },
+                    { title: 'Esportes: Time local vence campeonato com gol no último minuto', content: 'Festa da torcida após vitória emocionante...' }
+                ];
+
+                newsFeedDiv.innerHTML = ''; // Limpa o "Carregando..."
+                dummyNews.forEach(news => {
+                    const newsItem = document.createElement('div');
+                    newsItem.classList.add('news-item');
+                    newsItem.innerHTML = `
+                        <h3>${news.title}</h3>
+                        <p>${news.content}</p>
+                        <a href="#">Leia mais</a>
+                    `;
+                    newsFeedDiv.appendChild(newsItem);
+                });
+
+            } catch (error) {
+                console.error('Erro ao carregar notícias:', error);
+                newsFeedDiv.innerHTML = '<p>Não foi possível carregar as notícias no momento.</p>';
+            }
+        }
+
+        // 2. Carregamento do Clima
+        // Você precisaria de uma API de clima (ex: OpenWeatherMap, AccuWeather).
+        // Geralmente, você precisaria se registrar para obter uma chave de API.
+        async function fetchWeather() {
+            const apiKey = 'SUA_CHAVE_API_DO_CLIMA'; // Substitua pela sua chave de API
+            const city = 'Belo Horizonte';
+            const countryCode = 'BR';
+            const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${apiKey}&units=metric&lang=pt_br`;
+
+            try {
+                const response = await fetch(weatherUrl);
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP! status: ${response.status}`);
+                }
+                const data = await response.json();
+
+                document.getElementById('weather-temp').textContent = `${Math.round(data.main.temp)}°C`;
+                document.getElementById('weather-condition').textContent = data.weather[0].description;
+                document.getElementById('weather-location').textContent = `${data.name}, ${data.sys.country}`;
+
+            } catch (error) {
+                console.error('Erro ao carregar clima:', error);
+                document.getElementById('weather-temp').textContent = '--°C';
+                document.getElementById('weather-condition').textContent = 'Erro ao carregar';
+            }
+        }
+
+        // 3. Cadastro (Newsletter)
+        // O envio do formulário de cadastro geralmente requer um backend para processar os dados
+        // e armazená-los em um banco de dados.
+        document.getElementById('signup-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value;
+            const signupMessage = document.getElementById('signup-message');
+
+            // Aqui você enviaria o email para o seu backend.
+            // Exemplo de como seria a requisição (requer um backend configurado para isso):
+            try {
+                // const response = await fetch('/api/signup', { // Exemplo de endpoint no seu backend
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify({ email: email })
+                // });
+
+                // if (response.ok) {
+                //     signupMessage.textContent = 'Cadastro realizado com sucesso!';
+                //     emailInput.value = ''; // Limpa o campo
+                // } else {
+                //     const errorData = await response.json();
+                //     signupMessage.textContent = `Erro ao cadastrar: ${errorData.message || 'Tente novamente.'}`;
+                //     signupMessage.style.color = 'red';
+                // }
+
+                // Simulação de sucesso sem backend:
+                signupMessage.textContent = `Obrigado por se cadastrar, ${email}!`;
+                emailInput.value = '';
+                signupMessage.style.color = 'green';
+
+            } catch (error) {
+                console.error('Erro no cadastro:', error);
+                signupMessage.textContent = 'Ocorreu um erro ao tentar cadastrar. Por favor, tente novamente.';
+                signupMessage.style.color = 'red';
+            }
+        });
+
+        // Chamadas iniciais ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchNews();
+            fetchWeather();
+        });
+    </script>
+</body>
+</html>
