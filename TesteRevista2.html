@@ -129,6 +129,20 @@
             text-decoration: underline;
         }
 
+        .traffic-map-placeholder {
+            width: 100%;
+            height: 200px; /* Altura fixa para simular o mapa */
+            background-color: #e0e0e0; /* Cor de fundo para o placeholder */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+            text-align: center;
+            border: 1px dashed #aaa;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
         .newsletter-signup input[type="email"],
         .newsletter-signup button {
             width: 100%;
@@ -186,6 +200,7 @@
         <a href="#">Início</a>
         <a href="#">Rotas & Notícias</a>
         <a href="#">Clima na Estrada</a>
+        <a href="#">Tráfego ao Vivo</a>
         <a href="#">Onde Comer</a>
         <a href="#">Onde Ficar</a>
         <a href="#">Compras</a>
@@ -221,6 +236,15 @@
                 <p>Temperatura: <span id="weather-temp">--°C</span></p>
                 <p>Condição: <span id="weather-condition">Carregando...</span></p>
                 <p style="font-size: 0.85rem; color: #555;">(Previsão para as principais cidades do Triângulo em breve)</p>
+            </div>
+
+            <div class="info-box traffic-info">
+                <h2><a href="#" style="color: inherit; text-decoration: none;">Tráfego em Tempo Real</a></h2>
+                <p>Monitore as condições das principais rodovias do Triângulo Mineiro e planeje sua rota com inteligência.</p>
+                <div class="traffic-map-placeholder">
+                    [Espaço para Mapa de Tráfego ao Vivo - Google Maps API ou similar]
+                </div>
+                <a href="#" style="color: #3498db; text-decoration: none; font-weight: bold; margin-top: 10px; display: block;">Ver no Mapa Completo</a>
             </div>
 
             <div class="info-box newsletter-signup">
