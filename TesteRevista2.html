@@ -5,19 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estradas do Triângulo: Sua Guia Digital</title>
     <style>
-        /* Estilos básicos para a revista */
+        /* Cores base para acessibilidade: */
+        /* Amarelo vibrante para detalhes: #FFD700 (Dourado/Gold) */
+        /* Amarelo mais suave para fundos claros: #FFFACD (Lemon Chiffon) */
+        /* Azul escuro para textos e fundos principais: #2c3e50 (Dark Midnight Blue) */
+        /* Azul mais claro para links e destaques: #3498db (Petra Blue) */
+        /* Cinza escuro para textos secundários: #333 */
+        /* Branco para fundos gerais: #fff */
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: #f4f4f4; /* Fundo geral claro */
+            color: #333; /* Cor padrão do texto */
         }
         header {
-            background-color: #2c3e50; /* Um tom de azul escuro para remeter a viagens */
+            background-color: #2c3e50; /* Azul escuro para o cabeçalho */
             color: #fff;
             padding: 1.5rem 0;
             text-align: center;
+            border-bottom: 5px solid #FFD700; /* Linha amarela de destaque */
         }
         header h1 {
             margin: 0;
@@ -28,7 +36,7 @@
             font-size: 1.1rem;
         }
         nav {
-            background-color: #34495e; /* Um azul um pouco mais claro */
+            background-color: #34495e; /* Um azul um pouco mais claro que o cabeçalho */
             padding: 0.7rem 0;
             text-align: center;
         }
@@ -36,19 +44,20 @@
             color: #fff;
             text-decoration: none;
             padding: 0 1.2rem;
-            transition: background-color 0.3s ease, transform 0.2s ease; /* Efeito de transição */
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         nav a:hover {
-            background-color: #4a6982; /* Cor de fundo ao passar o mouse */
+            background-color: #FFD700; /* Amarelo no hover dos links */
+            color: #2c3e50; /* Texto escuro no hover para contraste */
             border-radius: 4px;
-            transform: translateY(-2px); /* Pequeno efeito de elevação */
+            transform: translateY(-2px);
         }
         .container {
             max-width: 1200px;
             margin: 20px auto;
             padding: 0 20px;
             display: grid;
-            grid-template-columns: 2fr 1fr; /* Duas colunas: notícias e barra lateral */
+            grid-template-columns: 2fr 1fr;
             gap: 20px;
         }
         .main-content, .sidebar {
@@ -58,9 +67,9 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .section-title {
-            color: #2c3e50; /* Cor do cabeçalho principal */
+            color: #2c3e50; /* Azul escuro para os títulos de seção */
             margin-bottom: 15px;
-            border-bottom: 2px solid #ddd;
+            border-bottom: 2px solid #FFD700; /* Amarelo para a linha inferior do título */
             padding-bottom: 5px;
         }
         .news-item {
@@ -74,7 +83,7 @@
         }
         .news-item h3 {
             margin-top: 0;
-            color: #3498db; /* Um azul mais vibrante para títulos */
+            color: #3498db; /* Azul vibrante para títulos de notícia */
         }
         .news-item p {
             font-size: 0.9rem;
@@ -93,15 +102,15 @@
         .info-box {
             margin-bottom: 20px;
             padding: 15px;
-            border: 1px solid #cce5ff; /* Borda suave azul claro */
+            border: 1px solid #FFFACD; /* Borda suave amarela clara */
             border-radius: 5px;
-            background-color: #e6f3ff; /* Fundo suave azul claro */
+            background-color: #FFFACD; /* Fundo suave amarela clara */
         }
         .info-box h2 {
             margin-top: 0;
-            color: #2c3e50;
+            color: #2c3e50; /* Títulos das caixas em azul escuro */
             font-size: 1.3rem;
-            border-bottom: 1px dashed #aaddff;
+            border-bottom: 1px dashed #FFD700; /* Linha pontilhada amarela */
             padding-bottom: 5px;
             margin-bottom: 10px;
         }
@@ -109,6 +118,17 @@
             font-size: 0.95rem;
             line-height: 1.4;
         }
+        .info-box a { /* Links dentro das info-boxes */
+            color: #3498db; /* Azul vibrante para links */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .info-box a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
         .newsletter-signup input[type="email"],
         .newsletter-signup button {
             width: 100%;
@@ -119,7 +139,7 @@
             box-sizing: border-box;
         }
         .newsletter-signup button {
-            background-color: #27ae60; /* Verde mais escuro */
+            background-color: #27ae60; /* Verde escuro para o botão de cadastro */
             color: white;
             cursor: pointer;
             border: none;
@@ -131,19 +151,20 @@
         footer {
             text-align: center;
             padding: 1.2rem 0;
-            background-color: #333;
+            background-color: #2c3e50; /* Azul escuro para o rodapé */
             color: #fff;
             margin-top: 20px;
             font-size: 0.9rem;
+            border-top: 5px solid #FFD700; /* Linha amarela de destaque */
         }
 
         /* Responsividade */
         @media (max-width: 768px) {
             .container {
-                grid-template-columns: 1fr; /* Uma única coluna em telas menores */
+                grid-template-columns: 1fr;
             }
             nav a {
-                display: block; /* Links de navegação empilhados em telas menores */
+                display: block;
                 padding: 0.8rem 1rem;
             }
             header h1 {
@@ -196,7 +217,7 @@
         <aside class="sidebar">
             <div class="info-box weather-info">
                 <h2>Clima na Estrada</h2>
-                <p>Situação atual para: <span id="weather-location">Belo Horizonte, MG</span></p>
+                <p>Situação atual para: <span id="weather-location">Uberlândia, MG</span></p>
                 <p>Temperatura: <span id="weather-temp">--°C</span></p>
                 <p>Condição: <span id="weather-condition">Carregando...</span></p>
                 <p style="font-size: 0.85rem; color: #555;">(Previsão para as principais cidades do Triângulo em breve)</p>
