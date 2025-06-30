@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estradas do Triângulo: Sua Guia Digital</title>
+    <style>
+        /* Estilos básicos para a revista */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50; /* Um tom de azul escuro para remeter a viagens */
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.1rem;
+        }
+        nav {
+            background-color: #34495e; /* Um azul um pouco mais claro */
+            padding: 0.7rem 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 1.2rem;
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Efeito de transição */
+        }
+        nav a:hover {
+            background-color: #4a6982; /* Cor de fundo ao passar o mouse */
+            border-radius: 4px;
+            transform: translateY(-2px); /* Pequeno efeito de elevação */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Duas colunas: notícias e barra lateral */
+            gap: 20px;
+        }
+        .main-content, .sidebar {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            color: #2c3e50; /* Cor do cabeçalho principal */
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .news-item {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .news-item h3 {
+            margin-top: 0;
+            color: #3498db; /* Um azul mais vibrante para títulos */
+        }
+        .news-item p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .news-item a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .news-item a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        .info-box {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #cce5ff; /* Borda suave azul claro */
+            border-radius: 5px;
+            background-color: #e6f3ff; /* Fundo suave azul claro */
+        }
+        .info-box h2 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.3rem;
+            border-bottom: 1px dashed #aaddff;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        .info-box p {
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .newsletter-signup input[type="email"],
+        .newsletter-signup button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .newsletter-signup button {
+            background-color: #27ae60; /* Verde mais escuro */
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .newsletter-signup button:hover {
+            background-color: #229954;
+        }
+        footer {
+            text-align: center;
+            padding: 1.2rem 0;
+            background-color: #333;
+            color: #fff;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr; /* Uma única coluna em telas menores */
+            }
+            nav a {
+                display: block; /* Links de navegação empilhados em telas menores */
+                padding: 0.8rem 1rem;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Estradas do Triângulo: Sua Guia Digital</h1>
+        <p>Conectando você às melhores rotas, destinos e experiências do Triângulo Mineiro.</p>
+    </header>
+
+    <nav>
+        <a href="#">Início</a>
+        <a href="#">Rotas & Notícias</a>
+        <a href="#">Clima na Estrada</a>
+        <a href="#">Onde Comer</a>
+        <a href="#">Onde Ficar</a>
+        <a href="#">Compras</a>
+        <a href="#">Comunidade</a>
+    </nav>
+
+    <div class="container">
+        <main class="main-content">
+            <h2 class="section-title">Últimas Notícias e Condições das Estradas</h2>
+            <div id="news-feed">
+                <div class="news-item">
+                    <h3>BR-050: Novidades na Duplicação do Trecho Araguari-Uberlândia</h3>
+                    <p>Acompanhe os avanços das obras de duplicação que prometem mais fluidez e segurança para quem trafega pela região. Impactos no tráfego e desvios temporários.</p>
+                    <a href="#">Ver Detalhes</a>
+                </div>
+                <div class="news-item">
+                    <h3>Roteiro Gastronômico: Descobertas Culinárias em Uberaba</h3>
+                    <p>Exploramos os sabores únicos do Triângulo Mineiro, com destaque para a culinária tropeira e os restaurantes tradicionais de Uberaba. Imperdível para quem passa pela região!</p>
+                    <a href="#">Leia a Reportagem</a>
+                </div>
+                <div class="news-item">
+                    <h3>Segurança nas Rodovias: Dicas para Viagens Longas</h3>
+                    <p>Conduzir com segurança é prioridade. Confira nossas dicas essenciais para planejar sua viagem, revisar seu veículo e evitar imprevistos nas estradas do Triângulo.</p>
+                    <a href="#">Saiba Mais</a>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="info-box weather-info">
+                <h2>Clima na Estrada</h2>
+                <p>Situação atual para: <span id="weather-location">Belo Horizonte, MG</span></p>
+                <p>Temperatura: <span id="weather-temp">--°C</span></p>
+                <p>Condição: <span id="weather-condition">Carregando...</span></p>
+                <p style="font-size: 0.85rem; color: #555;">(Previsão para as principais cidades do Triângulo em breve)</p>
+            </div>
+
+            <div class="info-box newsletter-signup">
+                <h2>Receba Nossas Atualizações!</h2>
+                <p>As melhores rotas, dicas e eventos do Triângulo Mineiro direto no seu e-mail.</p>
+                <form id="signup-form">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                    <button type="submit">Cadastrar</button>
+                </form>
+                <div id="signup-message" style="margin-top: 10px; color: green;"></div>
+            </div>
+
+            <div class="info-box">
+                <h2><a href="#" style="color: inherit; text-decoration: none;">Fórum dos Viajantes</a></h2>
+                <p>Compartilhe suas experiências, tire dúvidas e encontre companheiros de estrada no nosso fórum exclusivo do Triângulo.</p>
+                <a href="#" style="color: #3498db; text-decoration: none; font-weight: bold;">Participar agora</a>
+            </div>
+
+            <div class="info-box">
+                <h2><a href="#" style="color: inherit; text-decoration: none;">Guia de Restaurantes</a></h2>
+                <p>Descubra os melhores sabores do Triângulo Mineiro: restaurantes, lanchonetes e bares recomendados por quem conhece a região.</p>
+                <a href="#" style="color: #3498db; text-decoration: none; font-weight: bold;">Ver Opções</a>
+            </div>
+
+            <div class="info-box">
+                <h2><a href="#" style="color: inherit; text-decoration: none;">Hospedagem na Estrada</a></h2>
+                <p>Encontre hotéis, pousadas e locais de descanso ideais para a sua viagem, com avaliações e dicas para um pernoite tranquilo.</p>
+                <a href="#" style="color: #3498db; text-decoration: none; font-weight: bold;">Explorar Hotéis</a>
+            </div>
+
+            <div class="info-box">
+                <h2><a href="#" style="color: inherit; text-decoration: none;">Lojas e Serviços</a></h2>
+                <p>De postos de gasolina a lojas de conveniência e serviços automotivos: tudo que você precisa saber sobre o comércio nas estradas do Triângulo.</p>
+                <a href="#" style="color: #3498db; text-decoration: none; font-weight: bold;">Descobrir Lojas</a>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Estradas do Triângulo: Sua Guia Digital. Todos os direitos reservados.</p>
+        <p>Um projeto para conectar e valorizar a região.</p>
+    </footer>
+
+    <script>
+        // --- JavaScript para funcionalidades dinâmicas (apenas placeholders para a apresentação) ---
+
+        async function fetchNews() {
+            const newsFeedDiv = document.getElementById('news-feed');
+            // Mantém as notícias estáticas para a apresentação
+        }
+
+        async function fetchWeather() {
+            const apiKey = 'SUA_CHAVE_API_DO_CLIMA'; // Substitua pela sua chave de API
+            const city = 'Uberlândia'; // Exemplo de cidade do Triângulo
+            const countryCode = 'BR';
+            const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${apiKey}&units=metric&lang=pt_br`;
+
+            try {
+                const response = await fetch(weatherUrl);
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP! status: ${response.status}`);
+                }
+                const data = await response.json();
+
+                document.getElementById('weather-temp').textContent = `${Math.round(data.main.temp)}°C`;
+                document.getElementById('weather-condition').textContent = data.weather[0].description;
+                document.getElementById('weather-location').textContent = `${data.name}, ${data.sys.country}`;
+
+            } catch (error) {
+                console.error('Erro ao carregar clima:', error);
+                document.getElementById('weather-temp').textContent = '--°C';
+                document.getElementById('weather-condition').textContent = 'Erro ao carregar';
+            }
+        }
+
+        document.getElementById('signup-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value;
+            const signupMessage = document.getElementById('signup-message');
+
+            signupMessage.textContent = `Email "${email}" registrado para contato.`;
+            emailInput.value = '';
+            signupMessage.style.color = 'green';
+        });
+
+        // Chamadas iniciais ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            // Não chamamos fetchNews() para manter o conteúdo estático para a demo
+            fetchWeather(); // Pode tentar buscar o clima, mas se a API Key não for real, dará erro
+        });
+    </script>
+</body>
+</html>
